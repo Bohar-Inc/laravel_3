@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
+    use ValidatesRequests;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $categories = Category::orderby('created_at', 'desc')->get();
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -27,7 +31,17 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+        $this->validate($request, [
+            'name' => 'required|min:2|max:50|unique:categories',
+        ]);
+
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+
+        flash('Category created successfully!')->success();
+        return back();
     }
 
     /**
