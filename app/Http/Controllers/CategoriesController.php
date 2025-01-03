@@ -54,17 +54,26 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        return view('categories.edit');
+        $category=Category::findOrFail($id);
+        return view('categories.edit',compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:2|max:50|unique:categories',
+        ]);
+
+        $category=Category::findOrFail($id);
+        $category->name=$request->name;
+        $category->save();
+        \flash('Category updated successfully!')->success();
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -72,6 +81,9 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category=Category::findOrFail($id);
+        $category->delete();
+        \flash('Category deleted successfully!')->success();
+        return redirect()->route('categories.index');
     }
 }
