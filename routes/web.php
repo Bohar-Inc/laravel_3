@@ -17,5 +17,5 @@ Route::middleware([
 });
 
 Route::get('/template',function(){
-    return view('temp');
+    return view('layouts.master');
 });
