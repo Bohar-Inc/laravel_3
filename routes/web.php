@@ -16,6 +16,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/template',function (){
-    return view('layouts.master');
-});
+
+//Category
+Route::resource('categories',\App\Http\Controllers\CategoriesController::class );
