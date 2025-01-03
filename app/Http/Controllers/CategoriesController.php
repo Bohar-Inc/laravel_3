@@ -66,7 +66,7 @@ class CategoriesController extends Controller
     public function update(Request $request,$id)
     {
         $this->validate($request, [
-            'name' => 'required|min:2|max:50|unique:categories',
+            'name' => 'required|min:2|max:50|unique:categories,name,'.$id,
         ]);
 
         $category=Category::findOrFail($id);
