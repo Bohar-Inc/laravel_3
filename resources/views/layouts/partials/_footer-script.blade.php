@@ -7,4 +7,19 @@
 <!-- AdminLTE App -->
 <script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
 
+<!-- DataTables -->
+<script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+
+    $(".datatable").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+    });
+</script>
+
 @stack('scripts')
