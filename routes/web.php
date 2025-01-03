@@ -17,5 +17,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
-//Category
-Route::resource('categories', CategoriesController::class);
+Route::middleware(['auth:sanctum'])->group(function () {
+//    category
+    Route::resource('categories', CategoriesController::class);
+});
+
