@@ -5,7 +5,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <head>
-@include('layouts.partials._head')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @include('layouts.partials._head')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -13,11 +14,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @include('layouts.partials._sidebar')
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="app">
         @include('flash::message')
 @yield('content')
 
     </div>
+
     <!-- /.content-wrapper -->
 @include('layouts.partials._footer')
 
