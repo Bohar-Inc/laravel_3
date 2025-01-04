@@ -27,7 +27,6 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body">
                                 <h5 class="card-title">Category List</h5><br>
-                                <example-component></example-component>
                                 <a href="{{route('categories.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>Add Category</a>
                                 <table class="table table-bordered datatable">
                                     <thead>
